@@ -1,18 +1,18 @@
+import { cookies } from "next/headers";
 import Image from "next/image";
 
 export async function generateMetadata() {
-  const data = await fetch("http://localhost:3000/api").then(async (resp) => console.log("API response in generateMetadata", (await resp.json())));
+  const data = await fetch("http://localhost:8080/product").then(async (resp) => console.log("API response in generateMetadata"));
 
   return {
     title: '...',
   }
 }
 
-export const dynamic = 'force-dynamic';
-
 export default async function Home() {
-  const data = await fetch("http://localhost:3000/api").then(async (resp) => console.log("API response in Home component", (await resp.json())));
-  const data2 = await fetch("http://localhost:3000/api").then(async (resp) => console.log("API response in Home component 2", (await resp.json())));
+  cookies().get("aa");
+  const data = await fetch("http://localhost:8080/product").then(async (resp) => console.log("API response in Home component",));
+  const data2 = await fetch("http://localhost:8080/product").then(async (resp) => console.log("API response in Home component 2"));
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
