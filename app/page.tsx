@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 
 export async function generateMetadata() {
-  const data = await fetch("http://localhost:8080/product").then(async (resp) => console.log("API response in generateMetadata"));
+  await fetch("http://localhost:8080/product/1").then(async (resp) => console.log("API response in generateMetadata"));
 
   return {
     title: '...',
@@ -10,9 +10,9 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  cookies().get("aa");
-  const data = await fetch("http://localhost:8080/product").then(async (resp) => console.log("API response in Home component",));
-  const data2 = await fetch("http://localhost:8080/product").then(async (resp) => console.log("API response in Home component 2"));
+  cookies().get("dummy");
+  await fetch("http://localhost:8080/product/1").then(async (resp) => console.log("API response in Home component",));
+  await fetch("http://localhost:8080/product/1").then(async (resp) => console.log("API response in Home component 2"));
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
