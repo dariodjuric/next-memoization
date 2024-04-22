@@ -1,6 +1,19 @@
 import Image from "next/image";
 
-export default function Home() {
+export async function generateMetadata() {
+  const data = await fetch("http://localhost:3000/api").then(async (resp) => console.log("API response in generateMetadata", (await resp.json())));
+
+  return {
+    title: '...',
+  }
+}
+
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const data = await fetch("http://localhost:3000/api").then(async (resp) => console.log("API response in Home component", (await resp.json())));
+  const data2 = await fetch("http://localhost:3000/api").then(async (resp) => console.log("API response in Home component 2", (await resp.json())));
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
